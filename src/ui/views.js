@@ -4,18 +4,13 @@ import React from "react";
 import { Route } from "mobx-router";
 
 //containers
-import LoginContainer from "./login/containers/LoginContainer";
-import PostContainer from "./list/containers/PostContainer";
+import AppContainer from "./app/containers/AppContainer"
 
 const views = {
   login: new Route({
     path: "/",
-    component: <LoginContainer />
+    component: <AppContainer />
   }),
-  success: new Route({
-    path: "/list",
-    component: <PostContainer />
-  })
 };
 
 export default views;

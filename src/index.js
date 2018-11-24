@@ -6,10 +6,10 @@ import { Provider } from "mobx-react";
 
 import { MobxRouter, RouterStore, startRouter } from "mobx-router";
 import views from "./ui/views";
-import UserStore from "./stores/UserStore";
+import DiscoStore from "./stores/DiscoStore";
 
 const store = {
-  userStore: new UserStore(),
+  discoStore: new DiscoStore(),
   //here's how we can plug the routerStore into our store
   router: new RouterStore()
 };

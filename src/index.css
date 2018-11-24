@@ -1,3 +1,31 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: url("assets/fonts/SourceSansPro-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: bold;
+    src: url("assets/fonts/SourceSansPro-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url("assets/fonts/SourceSansPro-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    src: url("assets/fonts/SourceSansPro-SemiBold.ttf");
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +34,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    background: rgb(236, 235, 235);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+    font-family: Source Sans Pro, sans-serif;
+    outline: none;
 }
