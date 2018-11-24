@@ -25,7 +25,6 @@ const LoadMoreBtn = styled.button`
 
 const DiscoList = (props) => {
     return (
-        props.ready &&
         <Fragment>
             <ListContainer>
                 {props.discoList.map(

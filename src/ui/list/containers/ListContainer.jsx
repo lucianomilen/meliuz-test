@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {  observer } from "mobx-react";
-import { action, observable } from "mobx";
+import {inject, observer} from "mobx-react"
+import {action, observable} from "mobx"
 import DiscoList from "../components/DiscoList";
 import DiscoService from "../../../services/DiscoService"
 
+@inject("store")
 @observer
 class ListContainer extends Component {
     constructor(props) {
@@ -13,6 +14,8 @@ class ListContainer extends Component {
 
     @observable discoList = []
     @observable dataReady = false
+
+    store = this.props.store
 
     @action
     fetchDiscoList(){
@@ -24,13 +27,14 @@ class ListContainer extends Component {
     @action
     setDiscoList(result){
         this.discoList = result.results
-        console.log(result)
         this.dataReady = true
     }
 
     render() {
         return (
-            <DiscoList discoList={this.discoList} ready={this.dataReady}/>
+            <div>
+                {this.store.discoStore.selectedArtist.value && <DiscoList discoList={this.discoList}/>}
+            </div>
         )
     }
 }

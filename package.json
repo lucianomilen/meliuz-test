@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "latest",
     "mobx": "^5.6.0",
     "mobx-react": "^5.4.2",
     "mobx-router": "0.0.13",
@@ -10,6 +11,7 @@
     "react-app-rewire-mobx": "^1.0.9",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
+    "react-select": "^2.1.2",
     "styled-components": "^4.1.1"
   },
   "scripts": {

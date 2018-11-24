@@ -1,5 +1,10 @@
+import { action, observable } from "mobx";
+
 export default class DiscoStore {
-  verifyAccess = (email, password) => {
-    return email === "studio@moob.com" && password === "123456";
-  };
+  @observable selectedArtist = {};
+
+  @action
+  setSelectedArtist(artist) {
+    this.selectedArtist = artist;
+  }
 }
