@@ -3,6 +3,7 @@
   <component name="ProjectTasksOptions">
     <enabled-global>
       <option value="Prettier" />
+      <option value="Prettierjs" />
     </enabled-global>
   </component>
 </project>

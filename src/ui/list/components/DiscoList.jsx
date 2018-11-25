@@ -1,10 +1,15 @@
-import React, {Fragment} from 'react'
-import DiscoItem from "./DiscoItem"
-import styled from "styled-components"
+import React, { Fragment, Component } from "react";
+import DiscoItem from "./DiscoItem";
+import styled from "styled-components";
+import Modal from "react-modal";
+import DiscoService from "../../../services/DiscoService";
+import DiscoDetail from "./DiscoDetail";
+import loading from "../../../assets/images/loader.gif";
+import modalStyle from "./ModalStyle";
 
 const ListContainer = styled.div`
   margin: auto;
-`
+`;
 
 const LoadMoreBtn = styled.button`
   border-radius: 20px;
@@ -19,24 +24,84 @@ const LoadMoreBtn = styled.button`
   height: 35px;
   font-weight: 500;
   &:hover {
-      background: #4a88cb;
+    background: #4a88cb;
   }
-`
+`;
 
-const DiscoList = (props) => {
-    props.fetchDiscoList(props.artist)
+const LoadingIcon = styled.img`
+  margin: auto;
+  text-align: center;
+  display: flex;
+  padding-top: 20px;
+`;
+
+Modal.setAppElement("#root");
+
+//should be functional component, but react-modal needs state management
+export default class DiscoList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalIsOpen: false,
+      selectedDisc: {},
+      page: 1
+    };
+  }
+
+  //opens modal with the basic release info
+  openModal(disco) {
+    //fetches from api to get other info (like tracklist)
+    DiscoService.fetchDiscoDetail(disco).then(discoDetail => {
+      //after successful fetch sets selectedDisc and opens modal
+      this.setState({ selectedDisc: discoDetail });
+      this.setState({ modalIsOpen: true });
+    });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
+
+  //load more items after setState callback
+  loadMore() {
+    this.setState({ page: this.state.page + 1 }, () =>
+      this.props.fetchDiscoList(this.props.artist.value, this.state.page)
+    );
+  }
+
+  render() {
+    const props = this.props;
     return (
-        <Fragment>
-            <ListContainer>
-                {props.discoList.map(
-                    disco => DiscoItem(disco)
-                )}
-            </ListContainer>
-            <LoadMoreBtn>
-                LOAD MORE
-            </LoadMoreBtn>
-        </Fragment>
-    )
+      <Fragment>
+        {/*renders discoItems based on discoList*/}
+        <ListContainer>
+          {props.discoList.map((disco, index) => (
+            <DiscoItem
+              key={index}
+              openModal={disco => this.openModal(disco)}
+              disco={disco}
+            />
+          ))}
+        </ListContainer>
+        {/*shows load more btn if loading has finished*/}
+        {!props.loading && (
+          <LoadMoreBtn onClick={() => this.loadMore()}>LOAD MORE</LoadMoreBtn>
+        )}
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          style={modalStyle}
+          onRequestClose={() => this.closeModal()}
+          contentLabel="Disc Detail Modal"
+        >
+          <DiscoDetail
+            disco={this.state.selectedDisc}
+            artist={props.artist}
+            closeModal={() => this.closeModal()}
+          />
+        </Modal>
+        {/*loading icon*/}
+        {props.loading && <LoadingIcon src={loading} />}
+      </Fragment>
+    );
+  }
 }
-
-export default DiscoList

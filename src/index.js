@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -9,23 +9,21 @@ import views from "./ui/views";
 import DiscoStore from "./stores/DiscoStore";
 
 const store = {
+  //store init
   discoStore: new DiscoStore(),
-  //here's how we can plug the routerStore into our store
   router: new RouterStore()
 };
 
 startRouter(views, store);
 
+//renders single view. supports multiple views via router
 ReactDOM.render(
   <Provider store={store}>
-    <div>
+    <Fragment>
       <MobxRouter />
-    </div>
+    </Fragment>
   </Provider>,
   document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
