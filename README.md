@@ -1,6 +1,7 @@
 # Teste Méliuz Desenvolvedor Front End (Pl. e Sr.)
+Candidato: [Luciano Otoni Milen](https://www.linkedin.com/in/luciano-otoni-milen/)
 
-##Arquitetura
+## Arquitetura
 * [React](https://github.com/facebook/react)
 * [MobX](https://github.com/mobxjs/mobx)
 * [MobX Router](https://github.com/kitze/mobx-router)
@@ -34,7 +35,7 @@ A maneira mais fácil de lidar com `modal` em React. A implementação do 0 gast
 ### react-select
 Para o autocomplete funcionar foi mais fácil utilizar esta lib.
 
-## Issues
+## Observações
 O sistema funciona perfeitamente. Não houve nenhum problema de execução nos meus testes.
 
 Um detalhe: a descrição conforme mostrada nas imagens de design do sistema **não está disponível** na API do
@@ -43,7 +44,8 @@ Para substituir esta informação, coloquei uma tracklist das releases.
 
 
 O uso de `@decorators` no MobX exige um [rewire](https://github.com/timarney/react-app-rewired) do app, com a
-reestruturação do arquivo `config-overrides.js`, conforme explicado neste [link](https://github.com/timarney/react-app-rewired/tree/master/packages/react-app-rewire-mobx). 
+reestruturação do arquivo `config-overrides.js`, conforme explicado neste [link](https://github.com/timarney/react-app-rewired/tree/master/packages/react-app-rewire-mobx). Este passo do `rewire` é feito automaticamente no `npm install`.
+
 ## Execução do app
 Após baixar o projeto, rodar
  
