@@ -4,6 +4,10 @@ import closeIcon from "../../../assets/images/cross.png";
 
 const Container = styled.div`
   display: flex;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+  }
 `;
 
 const CloseIcon = styled.img`
@@ -16,6 +20,12 @@ const CloseIcon = styled.img`
 const Thumbnail = styled.img`
   padding-right: 30px;
   height: 100%;
+
+  @media (max-width: 560px) {
+    height: 150px;
+    width: 150px;
+    align-self: center;
+  }
 `;
 
 const DiscoInfoContainer = styled.div`

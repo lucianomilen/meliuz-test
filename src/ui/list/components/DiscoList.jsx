@@ -89,6 +89,7 @@ export default class DiscoList extends Component {
         )}
         <Modal
           isOpen={this.state.modalIsOpen}
+          className="modal"
           style={modalStyle}
           onRequestClose={() => this.closeModal()}
           contentLabel="Disc Detail Modal"

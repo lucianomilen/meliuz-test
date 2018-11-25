@@ -54,3 +54,22 @@ code {
 .hide-options .Select-menu-outer {
     display: none;
 }
+
+.modal{
+    background: #fff;
+
+}
+
+@media(max-width: 560px){
+    .modal {
+        width: 90% !important;
+        height: 85% !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        transform: translate(0,0) !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: auto;
+        padding: 1em !important;
+    }
+}
