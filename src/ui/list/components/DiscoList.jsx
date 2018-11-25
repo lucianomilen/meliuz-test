@@ -14,16 +14,17 @@ const LoadMoreBtn = styled.button`
   cursor: pointer;
   margin: 20px auto;
   width: 120px;
-    font-size: 13px;
-    justify-content: center;
-    height: 35px;
-    font-weight: 500;
-    &:hover {
-        background: #4a88cb;
-    }
+  font-size: 13px;
+  justify-content: center;
+  height: 35px;
+  font-weight: 500;
+  &:hover {
+      background: #4a88cb;
+  }
 `
 
 const DiscoList = (props) => {
+    props.fetchDiscoList(props.artist)
     return (
         <Fragment>
             <ListContainer>

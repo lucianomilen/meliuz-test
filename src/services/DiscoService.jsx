@@ -10,7 +10,7 @@ export default class DiscoService {
     }
 
     static async fetchDiscoList(query){
-        return await fetch(`https://api.discogs.com/database/search?q=${query}&type=release&per_page=5&token=${this.token}`)
+        return await fetch(`https://api.discogs.com/artists/${query}/releases?sort=year&per_page=5`)
             .then(response => response.json());
     }
 }

@@ -42,6 +42,7 @@ const Year = styled.div`
 
 
 const DiscoItem = disco => {
+    console.log(disco)
     return (
         <Item key={disco.id}>
             <ImageTitleContainer>

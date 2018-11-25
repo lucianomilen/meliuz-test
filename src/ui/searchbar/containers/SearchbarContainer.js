@@ -18,6 +18,7 @@ class SearchbarContainer extends Component {
 
   fetchFromAPI = _.debounce(query => {
     DiscoService.fetchArtistsList(query).then(response => {
+      console.log(response.results);
       this.setArtistsList(response.results);
     });
   }, 500);
@@ -26,7 +27,7 @@ class SearchbarContainer extends Component {
   setArtistsList(list) {
     this.artistsList = list.map(item => {
       return {
-        value: item.title,
+        value: item.id,
         label: item.title
       };
     });
